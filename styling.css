@@ -1,0 +1,30 @@
+body {
+  background-color: #191919;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.key {
+  margin: 10px 10px 10px 10px;
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  background-color: #2D4263;
+  color: #ecdbba;
+}
+
+
+#output{
+  background-color: #ecdbba;
+  color:#2D4263;
+}
+
+#input{
+  background-color: #C84B31;
+  color: #191919;
+}
+
