@@ -74,34 +74,45 @@ function getLetter(input, selectedRotors, reflector) {
   pos[selectedRotors[2]] += Math.floor(pos[selectedRotors[1]] / 26);
   pos[selectedRotors[1]] = pos[selectedRotors[1]] % 26;
   pos[selectedRotors[2]] = pos[selectedRotors[2]] % 26;
-  console.log(pos)
-  console.log(input)
-  input = rotors[selectedRotors[0]][0][(((input + pos[selectedRotors[0]]) % 26)+26)%26];
-  console.log(input)
+  console.log(pos);
+  console.log(input);
+  input =
+    rotors[selectedRotors[0]][0][
+      (((input + pos[selectedRotors[0]]) % 26) + 26) % 26
+    ];
+  console.log(input);
   input =
     rotors[selectedRotors[1]][0][
-    (((input + pos[selectedRotors[1]] - pos[selectedRotors[0]]) % 26 ) +26)% 26
+      (((input + pos[selectedRotors[1]] - pos[selectedRotors[0]]) % 26) + 26) %
+        26
     ];
-  console.log(input)
+  console.log(input);
   input =
     rotors[selectedRotors[2]][0][
-  (((input + pos[selectedRotors[2]] - pos[selectedRotors[1]]) % 26) + 26) % 26
+      (((input + pos[selectedRotors[2]] - pos[selectedRotors[1]]) % 26) + 26) %
+        26
     ];
-  console.log(input)
-  input = reflectors[reflector][(((input - pos[selectedRotors[2]]) % 26) + 26) % 26];
-  console.log(input)
-  input = rotors[selectedRotors[2]][1][(((input + pos[selectedRotors[2]]) % 26) + 26) % 26];
-  console.log(input)
+  console.log(input);
+  input =
+    reflectors[reflector][(((input - pos[selectedRotors[2]]) % 26) + 26) % 26];
+  console.log(input);
+  input =
+    rotors[selectedRotors[2]][1][
+      (((input + pos[selectedRotors[2]]) % 26) + 26) % 26
+    ];
+  console.log(input);
   input =
     rotors[selectedRotors[1]][1][
-  (((input + pos[selectedRotors[1]] - pos[selectedRotors[2]]) % 26) + 26) % 26
+      (((input + pos[selectedRotors[1]] - pos[selectedRotors[2]]) % 26) + 26) %
+        26
     ];
-  console.log(input)
+  console.log(input);
   input =
     rotors[selectedRotors[0]][1][
-  (((input + pos[selectedRotors[0]] - pos[selectedRotors[1]]) % 26) + 26) % 26
+      (((input + pos[selectedRotors[0]] - pos[selectedRotors[1]]) % 26) + 26) %
+        26
     ];
-  console.log(input)
+  console.log(input);
 
   return (((input - pos[selectedRotors[0]]) % 26) + 26) % 26;
 }
@@ -116,11 +127,9 @@ document.addEventListener("keypress", function onEvent(event) {
   console.log(event.key);
   document.getElementById("input").innerHTML =
     document.getElementById("input").innerHTML + event.key;
-  output = (
-    getLetter(event.key.charCodeAt() - 97, [0, 1, 2], 0) + 97
-  );
-  console.log(output)
-  output = String.fromCharCode(output)
+  output = getLetter(event.key.charCodeAt() - 97, [0, 1, 2], 0) + 97;
+  console.log(output);
+  output = String.fromCharCode(output);
   document.getElementById("output").innerHTML =
     document.getElementById("output").innerHTML + output;
 
@@ -140,21 +149,17 @@ function buttonPress(key) {
   }
 
   document.getElementById("input").innerHTML =
-    document.getElementById("input").innerHTML + key;
-    console.log(key)
+    document.getElementById("input").innerHTML + key.id;
   output = String.fromCharCode(
-    getLetter(key.charCodeAt() - 97, [0, 1, 2], 0) + 97
+    getLetter(key.id.charCodeAt(0) - 97, [0, 1, 2], 0) + 97
   );
+  console.log(output);
   document.getElementById("output").innerHTML =
     document.getElementById("output").innerHTML + output;
 
   document.getElementById(output).style.backgroundColor = "#ECDBBA";
   document.getElementById(output).style.color = "#191919";
-  document.getElementById(
-    String.fromCharCode(output + 97)
-  ).style.backgroundColor = "#ECDBBA";
-  document.getElementById(String.fromCharCode(output + 97)).style.color =
-    "#191919";
+
   document.getElementById(key.id).style.backgroundColor = "#C84B31";
   document.getElementById(key.id).style.color = "#2D4263";
 }
